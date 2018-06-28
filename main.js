@@ -110,7 +110,7 @@ $(document).ready(function(){
     function Post () {
         this.type = "";
         this.rate = 20;
-        this.cost = parseInt(2000 * (1.15 ** theGame.buzzwords.length));
+        this.cost = parseInt(2000 * (1.15 ** theGame.posts.length));
     }
 
     Post.prototype.replaceCost = function () {
@@ -120,7 +120,7 @@ $(document).ready(function(){
     function Feed () {
         this.type = "";
         this.rate = 50;
-        this.cost = parseInt(5000 * (1.15 ** theGame.buzzwords.length));
+        this.cost = parseInt(5000 * (1.15 ** theGame.articles.length));
     }
 
     Feed.prototype.replaceCost = function () {
@@ -130,7 +130,7 @@ $(document).ready(function(){
     function HooverTweet () {
         this.type = "";
         this.rate = 100;
-        this.cost = parseInt(10000 * (1.15 ** theGame.buzzwords.length));
+        this.cost = parseInt(10000 * (1.15 ** theGame.hooverTweets.length));
     }
 
     HooverTweet.prototype.replaceCost = function () {
@@ -140,7 +140,7 @@ $(document).ready(function(){
     function Gary () {
         this.type = "";
         this.rate = 500;
-        this.cost = parseInt(50000 * (1.15 ** theGame.buzzwords.length));
+        this.cost = parseInt(50000 * (1.15 ** theGame.garyV.length));
     }
 
     Gary.prototype.replaceCost = function () {
@@ -150,7 +150,7 @@ $(document).ready(function(){
     function ArtIntel () {
         this.type = "";
         this.rate = 1000;
-        this.cost = parseInt(1000000 * (1.15 ** theGame.buzzwords.length));
+        this.cost = parseInt(1000000 * (1.15 ** theGame.artificalIntel.length));
     }
 
     ArtIntel.prototype.replaceCost = function () {
@@ -160,7 +160,7 @@ $(document).ready(function(){
     function Blockchain () {
         this.type = "";
         this.rate = 100000;
-        this.cost = parseInt(100000000 * (1.15 ** theGame.buzzwords.length));
+        this.cost = parseInt(100000000 * (1.15 ** theGame.blockchains.length));
     }
 
     Blockchain.prototype.replaceCost = function () {
@@ -170,7 +170,7 @@ $(document).ready(function(){
     function Ship () {
         this.type = "";
         this.rate = 1000000;
-        this.cost = parseInt(1000000000 * (1.15 ** theGame.buzzwords.length));
+        this.cost = parseInt(1000000000 * (1.15 ** theGame.shipPH.length));
     }
 
     Ship.prototype.replaceCost = function () {
