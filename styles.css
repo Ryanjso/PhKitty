@@ -300,6 +300,10 @@ h5 {
   color: rgb(204, 93, 60);
 }
 
+h6 {
+  margin-top: 100px;
+}
+
 /* hr {
   background-color: aqua;
   color: red;
