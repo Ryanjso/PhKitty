@@ -11,13 +11,13 @@ $(document).ready(function(){
         this.gifs = [];                     // arrays for each building power up
         this.buzzwords = [];
         this.posts = [];
-        this.emailLists = [];
         this.articles = [];
         this.hooverTweets = [];
         this.garyV = [];
         this.artificalIntel = [];
         this.blockchains = [];
         this.shipPH = [];
+        this.elons = [];
     }
     
     PhKitty.prototype.addCounter = function () {
@@ -26,12 +26,12 @@ $(document).ready(function(){
     }
 
     PhKitty.prototype.replaceCounter = function () {
-        $(".counter").text("▲ " + parseInt(this.counter));
+        $(".counter").text("▲ " + parseInt(this.counter).toLocaleString('en'));
         // replaces the static html "Counter: 0" with a scaling number
     }
 
     PhKitty.prototype.replaceRate = function () {
-        $(".number-color").text(this.totalRate.toFixed(1));
+        $(".number-color").text(this.totalRate.toLocaleString('en'));
     }
 
     PhKitty.prototype.runPowerUps = function () {
@@ -39,7 +39,6 @@ $(document).ready(function(){
         var that = this;
         intervalID = setInterval(function(){
             that.counter += that.totalRate/100;
-            console.log(that.counter)
             theGame.replaceCounter();
         },10);
         // the clearInterval makes it so it adds 1, then 2, then 3 to the rate
@@ -74,7 +73,11 @@ $(document).ready(function(){
     }
 
     Cursor.prototype.replaceCost = function () {
-        $(".cost-curs").text("▼ " + (this.cost));
+        $(".cost-curs").text("▼ " + (this.cost).toLocaleString('en'));
+    }
+
+    Cursor.prototype.replaceQuant = function () {
+        $(".quant-curs").text(theGame.cursors.length);
     }
 
     function IoDomain () {
@@ -84,17 +87,25 @@ $(document).ready(function(){
     }
 
     IoDomain.prototype.replaceCost = function () {
-        $(".cost-dom").text("▼ " + (this.cost));
+        $(".cost-dom").text("▼ " + (this.cost).toLocaleString('en'));
     }
 
-    function gifImage () {
+    IoDomain.prototype.replaceQuant = function () {
+        $(".quant-dom").text(theGame.domains.length);
+    }
+
+    function GifImage () {
         this.type = "";
         this.rate = 5;
         this.cost = parseInt(500 * (1.15 ** theGame.gifs.length));
     }
 
-    gifImage.prototype.replaceCost = function () {
-        $(".cost-gif").text("▼ " + (this.cost));
+    GifImage.prototype.replaceCost = function () {
+        $(".cost-gif").text("▼ " + (this.cost).toLocaleString('en'));
+    }
+
+    GifImage.prototype.replaceQuant = function () {
+        $(".quant-gif").text(theGame.gifs.length);
     }
 
     function Buzzwords () {
@@ -104,7 +115,11 @@ $(document).ready(function(){
     }
 
     Buzzwords.prototype.replaceCost = function () {
-        $(".cost-buzzwords").text("▼ " + (this.cost));
+        $(".cost-buzzwords").text("▼ " + (this.cost).toLocaleString('en'));
+    }
+
+    Buzzwords.prototype.replaceQuant = function () {
+        $(".quant-buzzwords").text(theGame.buzzwords.length);
     }
 
     function Post () {
@@ -114,7 +129,11 @@ $(document).ready(function(){
     }
 
     Post.prototype.replaceCost = function () {
-        $(".cost-post").text("▼ " + (this.cost));
+        $(".cost-post").text("▼ " + (this.cost).toLocaleString('en'));
+    }
+
+    Post.prototype.replaceQuant = function () {
+        $(".quant-post").text(theGame.posts.length);
     }
 
     function Feed () {
@@ -124,7 +143,11 @@ $(document).ready(function(){
     }
 
     Feed.prototype.replaceCost = function () {
-        $(".cost-feed").text("▼ " + (this.cost));
+        $(".cost-feed").text("▼ " + (this.cost).toLocaleString('en'));
+    }
+
+    Feed.prototype.replaceQuant = function () {
+        $(".quant-feed").text(theGame.articles.length);
     }
 
     function HooverTweet () {
@@ -134,7 +157,11 @@ $(document).ready(function(){
     }
 
     HooverTweet.prototype.replaceCost = function () {
-        $(".cost-tweet").text("▼ " + (this.cost));
+        $(".cost-tweet").text("▼ " + (this.cost).toLocaleString('en'));
+    }
+
+    HooverTweet.prototype.replaceQuant = function () {
+        $(".quant-tweet").text(theGame.hooverTweets.length);
     }
 
     function Gary () {
@@ -144,7 +171,11 @@ $(document).ready(function(){
     }
 
     Gary.prototype.replaceCost = function () {
-        $(".cost-gary").text("▼ " + (this.cost));
+        $(".cost-gary").text("▼ " + (this.cost).toLocaleString('en'));
+    }
+
+    Gary.prototype.replaceQuant = function () {
+        $(".quant-gary").text(theGame.garyV.length);
     }
 
     function ArtIntel () {
@@ -154,17 +185,25 @@ $(document).ready(function(){
     }
 
     ArtIntel.prototype.replaceCost = function () {
-        $(".cost-ai").text("▼ " + (this.cost));
+        $(".cost-ai").text("▼ " + (this.cost).toLocaleString('en'));
+    }
+
+    ArtIntel.prototype.replaceQuant = function () {
+        $(".quant-ai").text(theGame.artificalIntel.length);
     }
 
     function Blockchain () {
         this.type = "";
         this.rate = 100000;
-        this.cost = parseInt(100000000 * (1.15 ** theGame.blockchains.length));
+        this.cost = parseInt(10 * (1.15 ** theGame.blockchains.length));
     }
 
     Blockchain.prototype.replaceCost = function () {
-        $(".cost-blockchain").text("▼ " + (this.cost));
+        $(".cost-blockchain").text("▼ " + (this.cost).toLocaleString('en'));
+    }
+
+    Blockchain.prototype.replaceQuant = function () {
+        $(".quant-blockchain").text(theGame.blockchains.length);
     }
 
     function Ship () {
@@ -174,7 +213,39 @@ $(document).ready(function(){
     }
 
     Ship.prototype.replaceCost = function () {
-        $(".cost-ship").text("▼ " + (this.cost));
+        $(".cost-ship").text("▼ " + (this.cost).toLocaleString('en'));
+    }
+
+    Ship.prototype.replaceQuant = function () {
+        $(".quant-ship").text(theGame.shipPH.length);
+    }
+
+    function Elon () {
+        this.type = "";
+        this.rate = 1000000000;
+        this.cost = parseInt(1000000000000 * (1.15 ** theGame.elons.length));
+    }
+
+    Elon.prototype.replaceCost = function () {
+        $(".cost-elon").text("▼ " + (this.cost).toLocaleString('en'));
+    }
+
+    Elon.prototype.replaceQuant = function () {
+        $(".quant-elon").text(theGame.elons.length);
+    }
+
+    function News () {
+      this.stories = [
+        "Your Mom calls to congratulate you on \"starting your little business\"",
+        "You get your first user...",
+        "...who gives your first poor review on the App Store :(",
+        "Six seperate startups with MIT grad student developers launch as your direct competitors",
+        "Your Co-Founder files a cease and desist because you did not give them 80% equity",
+      ];
+    }
+
+    News.prototype.chooseStory = function (i) {
+      return this.stories[i];
     }
 
     // this is where that shit that makes the html and js connect go below bruh 
@@ -183,13 +254,16 @@ $(document).ready(function(){
 
     $(".kitty").click(function(){
         theGame.addCounter();
-        console.log(theGame.counter);
         theGame.replaceCounter();
     });
 
+    $(".upvote").click(function(){
+        theGame.addCounter();
+        theGame.replaceCounter();
+    })
+
     $(".btn-icon-one").click(function(){
         var build = new Cursor();
-        
         
         if (theGame.incurCost(build.cost)) {
             
@@ -197,10 +271,10 @@ $(document).ready(function(){
             theGame.masterArray.push(build);
             build = new Cursor();
             build.replaceCost();
+            build.replaceQuant();
             theGame.calcTotalRate();
             theGame.runPowerUps();
             theGame.replaceRate();
-            
         }
     });
 
@@ -213,28 +287,26 @@ $(document).ready(function(){
             theGame.masterArray.push(build);
             build = new IoDomain();
             build.replaceCost();
+            build.replaceQuant();
             theGame.calcTotalRate();
             theGame.runPowerUps();
             theGame.replaceRate();
-            
-            
         }
     })
 
     $(".btn-icon-three").click(function(){
-        var build = new gifImage();
+        var build = new GifImage();
        
         if (theGame.incurCost(build.cost)) {
             
             theGame.gifs.push(build);
             theGame.masterArray.push(build);
-            build = new gifImage();
+            build = new GifImage();
             build.replaceCost();
+            build.replaceQuant();
             theGame.calcTotalRate();
             theGame.runPowerUps();
-            theGame.replaceRate();
-            
-            
+            theGame.replaceRate(); 
         }
     })
 
@@ -247,23 +319,7 @@ $(document).ready(function(){
             theGame.masterArray.push(build);
             build = new Buzzwords();
             build.replaceCost();
-            theGame.calcTotalRate();
-            theGame.runPowerUps();
-            theGame.replaceRate();
-            
-            
-        }
-    })
-
-    $(".btn-icon-four").click(function(){
-        var build = new Buzzwords();
-       
-        if (theGame.incurCost(build.cost)) {
-            
-            theGame.buzzwords.push(build);
-            theGame.masterArray.push(build);
-            build = new Buzzwords();
-            build.replaceCost();
+            build.replaceQuant();
             theGame.calcTotalRate();
             theGame.runPowerUps();
             theGame.replaceRate();
@@ -279,6 +335,7 @@ $(document).ready(function(){
             theGame.masterArray.push(build);
             build = new Post();
             build.replaceCost();
+            build.replaceQuant();
             theGame.calcTotalRate();
             theGame.runPowerUps();
             theGame.replaceRate(); 
@@ -294,6 +351,7 @@ $(document).ready(function(){
             theGame.masterArray.push(build);
             build = new Feed();
             build.replaceCost();
+            build.replaceQuant();
             theGame.calcTotalRate();
             theGame.runPowerUps();
             theGame.replaceRate(); 
@@ -309,6 +367,7 @@ $(document).ready(function(){
             theGame.masterArray.push(build);
             build = new HooverTweet();
             build.replaceCost();
+            build.replaceQuant();
             theGame.calcTotalRate();
             theGame.runPowerUps();
             theGame.replaceRate(); 
@@ -324,6 +383,7 @@ $(document).ready(function(){
             theGame.masterArray.push(build);
             build = new Gary();
             build.replaceCost();
+            build.replaceQuant();
             theGame.calcTotalRate();
             theGame.runPowerUps();
             theGame.replaceRate(); 
@@ -339,6 +399,7 @@ $(document).ready(function(){
             theGame.masterArray.push(build);
             build = new ArtIntel();
             build.replaceCost();
+            build.replaceQuant();
             theGame.calcTotalRate();
             theGame.runPowerUps();
             theGame.replaceRate(); 
@@ -354,6 +415,7 @@ $(document).ready(function(){
             theGame.masterArray.push(build);
             build = new Blockchain();
             build.replaceCost();
+            build.replaceQuant();
             theGame.calcTotalRate();
             theGame.runPowerUps();
             theGame.replaceRate(); 
@@ -369,12 +431,40 @@ $(document).ready(function(){
             theGame.masterArray.push(build);
             build = new Ship();
             build.replaceCost();
+            build.replaceQuant();
             theGame.calcTotalRate();
             theGame.runPowerUps();
             theGame.replaceRate(); 
         }
     })
 
+    $(".btn-icon-twelve").click(function(){
+        var build = new Elon();
+       
+        if (theGame.incurCost(build.cost)) {
+            
+            theGame.elons.push(build);
+            theGame.masterArray.push(build);
+            build = new Elon();
+            build.replaceCost();
+            build.replaceQuant();
+            theGame.calcTotalRate();
+            theGame.runPowerUps();
+            theGame.replaceRate(); 
+        }
+    })
+
+    var slurp = new News();
+    var storyIndex = 0;
+    
+    setInterval(function(){
+      if(storyIndex < 5) {
+        $(".slurp").text(slurp.chooseStory(storyIndex));
+        storyIndex++;
+      } else {
+        storyIndex = 0;
+      }
+    },4000);
 
 
 
