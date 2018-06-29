@@ -239,8 +239,8 @@ $(document).ready(function(){
         "Your Mom calls to congratulate you on \"starting your little business\"",
         "You get your first user...",
         "...who gives your first poor review on the App Store :(",
-        "Six seperate startups with MIT grad student developers launch as your direct competitors",
-        "Your Co-Founder files a cease and desist because you did not give them 80% equity",
+        "Six seperate startups with MIT grad student developers launch as competitors",
+        "Your Co-Founder files a cease and desist; you did not give them 51% equity",
       ];
     }
 
